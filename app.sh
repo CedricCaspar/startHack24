@@ -1,0 +1,1 @@
+streamlit run /Users/ccaspar/Desktop/Code/niatsu/startHack24/App.py
