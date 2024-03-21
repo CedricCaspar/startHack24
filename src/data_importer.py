@@ -1,12 +1,12 @@
 import pandas as pd
 import numpy as np
-import openpyxl
 
 from src.data import Result, Student, Objective, Exam
 import streamlit as st
 
 data = pd.read_excel("src/students/student_data copy.xlsx")
 
+data = pd.read_excel("src/students/student_data.xlsx")
 def getIdStudent(name):
     df = data.loc[data['name'] == name]
     val = df['studentId'].unique().item()
@@ -88,3 +88,15 @@ data_dict = {
     "results": results
 }
 st.session_state.data = data_dict
+
+def get_objectives_for_student(name):
+
+    # Find rows where any column matches `search_value`
+    matched_rows = data[data.apply(lambda row: row.astype(str).str.contains(name).any(), axis=1)]
+
+    objectives = [row[1]['objective'] for row in matched_rows.iterrows()]
+    evaluation = [row[1]['evaluation'] for row in matched_rows.iterrows()]
+
+    objectives_dict = dict(zip(objectives, evaluation))
+
+    return objectives_dict
