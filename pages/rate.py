@@ -15,6 +15,7 @@ def printOption():
 
 
 # Dictionary to hold the checkbox state
+
 form = st.form("test")
 
 for option in options:
