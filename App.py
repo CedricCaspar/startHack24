@@ -22,8 +22,8 @@ with col1:
     students = get_student_names()
 
     for student in students:
-        with st.expander(student):
-            st.write(f"Opening {student}")
+        with st.expander(student.objective):
+            st.write(f"Opening {student.objective}")
 
 
 with col2:

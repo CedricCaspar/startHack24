@@ -35,25 +35,32 @@ class Student:
         self.id = id
         self.name = name
 
+    def __repr__(self):
+        return self.name
+
 
 class Objective:
     id: int
     subject: str
-    name: str
-    desc: str
+    objective: str
+    competency: str
     objectiveClass: str
 
-    def __init__(self, id, name, subject):
+    def __init__(self, id, name, subject, competency, uid):
         self.id = id
         self.subject = subject
-        self.name = name
-        self.desc = "Long description here"
+        self.objective = name
+        self.competency = competency
+        self.uid = uid
 
     def __eq__(self, other):
-        return self.id == other.id
+        return self.objective == other.objective
 
     def __ne__(self, other):
         return self.id != other.id
+
+    def __repr__(self):
+        return str(self.subject) + "|" + self.objective
 
 
 class ExamQuestion:

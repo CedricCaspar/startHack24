@@ -85,7 +85,7 @@ with col1:
     st.button("Previous", disabled=(st.session_state.studentId == 0), on_click=prevStudent)
 
 with col2:
-    st.markdown("### " + st.session_state.data["classes"][st.session_state.classId][st.session_state.studentId].name)
+    st.markdown("### " + st.session_state.data["classes"][st.session_state.classId][st.session_state.studentId].objective)
 with col3:
     st.button("Next", disabled=(
             st.session_state.studentId == len(st.session_state.data["classes"][st.session_state.classId]) - 1),
@@ -130,8 +130,8 @@ for question in st.session_state.data["exams"][st.session_state.examId].objectiv
     with st.container():
         col4, col5 = st.columns([8, 4])
         with col4:
-            st.markdown(f"#### {objectives[question.objectiveId].name}")
-            st.markdown(f"{objectives[question.objectiveId].desc}")
+            st.markdown(f"#### {objectives[question.objectiveId].objective}")
+            st.markdown(f"{objectives[question.objectiveId].competency}")
         with col5:
             v = getResult(st.session_state.examId,
                           st.session_state.studentId, question.objectiveId).value
