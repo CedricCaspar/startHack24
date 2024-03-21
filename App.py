@@ -26,21 +26,6 @@ with col1:
             st.write(f"Opening {student}")
 
 
-
-    # Populate the table rows
-
-
-    # # Populate the table rows
-    # for row in data:
-    #     cols = st.columns(2)  # Create a set of columns for each row
-    #     cols[0].write(row["text"])  # Display text in the first column
-    #
-    #     # Display buttons or icons in the second and third columns
-    #     if cols[1].button(row["button1"], key=row["text"] + "1"):
-    #         st.markdown(row['text'])
-    #
-
-
 with col2:
 
     with stylable_container(
