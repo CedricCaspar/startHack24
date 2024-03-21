@@ -6,7 +6,6 @@ import streamlit as st
 
 data = pd.read_excel("src/students/student_data copy.xlsx")
 
-data = pd.read_excel("src/students/student_data.xlsx")
 def getIdStudent(name):
     df = data.loc[data['name'] == name]
     val = df['studentId'].unique().item()
