@@ -36,7 +36,7 @@ class Student:
         self.name = name
 
     def __repr__(self):
-        return self.name
+        return str(self.id) + ":" +self.name
 
 
 class Objective:
@@ -60,7 +60,7 @@ class Objective:
         return self.id != other.id
 
     def __repr__(self):
-        return str(self.subject) + "|" + self.objective
+        return str(self.id) + ":" + str(self.subject) + "|" + self.objective
 
 
 class ExamQuestion:
@@ -72,6 +72,9 @@ class ExamQuestion:
         self.number = nr
         self.objectiveId = objId
         self.weight = weight
+
+    def __repr__(self):
+        return str(self.__dict__)
 
     def __str__(self):
         return "Aufgabe: " + self.number + ", Objective: " + str(self.objectiveId) + ", weight: " + str(self.weight)

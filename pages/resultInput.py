@@ -1,6 +1,6 @@
 import streamlit as st
 
-from data import Result
+from src.data import Result
 from src.sg_files.globalData import data
 
 objectives = data["objectives"]

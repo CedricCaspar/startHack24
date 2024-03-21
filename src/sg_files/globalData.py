@@ -1,4 +1,4 @@
-from data import Objective, Exam, Student, Result
+from src.data import Objective, Exam, Student, Result
 
 data = {"objectives": {0: Objective(0, "Ich kann Flächeninhalte schätzen.", "Mathematik"),
                     1: Objective(1, "Ich kann Fläche, Umfang & Seitenlange von Rechtecken bestimmen.", "Mathematik"),
