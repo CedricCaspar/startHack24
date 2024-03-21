@@ -37,10 +37,10 @@ def get_student_names():
     if names_column in data.columns:
         unique_names = data[names_column].unique()
         students = [Student(getIdStudent(name), name) for i, name in enumerate(unique_names)]
-        print(students)
+
         return students
     else:
-        print(f"Column '{names_column}' not found in the Excel data.")
+
         return []
 
 
@@ -72,6 +72,7 @@ def get_exams():
     exams = []
     for i in range(max_exams):
         exam = getIdExam(i)
+        exam.teacher = "Fekete, K" if exam.subject == "Deutsch" else "Hobi, R"
         exams.append(exam)
     return exams
 
