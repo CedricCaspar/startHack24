@@ -1,11 +1,8 @@
 import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
 import plotly.graph_objects as go
+
 from src.data_importer import get_student_names
-
-
-
-
 
 st.set_page_config(
     page_title="Students",
@@ -22,8 +19,8 @@ with col1:
     students = get_student_names()
 
     for student in students:
-        with st.expander(student.objective):
-            st.write(f"Opening {student.objective}")
+        with st.expander(student.name):
+            st.write(f"Opening {student.name}")
 
 
 with col2:

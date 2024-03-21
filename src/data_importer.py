@@ -3,6 +3,7 @@ import numpy as np
 import openpyxl
 
 from src.data import Result, Student, Objective, Exam
+import streamlit as st
 
 data = pd.read_excel("src/students/student_data copy.xlsx")
 
@@ -26,7 +27,7 @@ def getIdExam(id):
     tasks = df[['oId', 'task', 'weight']].to_numpy()
     tasks = np.unique(tasks, axis=0)
     #print(tasks.transpose()[2], tasks.transpose()[0], [str(n) for n in tasks.transpose()[1]])
-    return Exam(id, date, sub, [str(n) for n in tasks.transpose()[1]], tasks.transpose()[0], tasks.transpose()[2])
+    return Exam(id, date[0], sub[0], [str(n) for n in tasks.transpose()[1]], tasks.transpose()[0], tasks.transpose()[2])
 
 
 def get_student_names():
@@ -58,7 +59,7 @@ def get_objectives():
 def get_results():
     objective_column = ['studentId', 'oId', 'exam', 'evaluation']
     objs = data[objective_column]
-    print(objs)
+
     objs = [Result(row[0], row[2], row[1], row[3]) for i, row in objs.iterrows()]
 
     return objs
@@ -74,4 +75,16 @@ def get_exams():
         exams.append(exam)
     return exams
 
-print(get_results())
+
+students = get_student_names()
+objectives = get_objectives()
+exams = get_exams()
+results = get_results()
+
+data_dict = {
+    "objectives": objectives,
+    "exams": exams,
+    "classes": [students],
+    "results": results
+}
+st.session_state.data = data_dict
