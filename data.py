@@ -1,6 +1,32 @@
 import time
 
 
+class Result:
+    studentId: int
+    examId: int
+    objectiveId: int
+
+    value: int
+
+    def __init__(self, sId, eId, oId, value):
+        self.studentId = sId
+        self.examId = eId
+        self.objectiveId = oId
+        self.value = value
+
+    def __str__(self):
+        return "("+str(self.studentId) + ", " + str(self.examId) + ", " + str(self.objectiveId) + " => " + str(self.value)+")"
+
+    def __repr__(self):
+        return "( s:"+str(self.studentId) + ", e:" + str(self.examId) + ", o:" + str(self.objectiveId) + " => v:" + str(self.value) + ")"
+
+    def __eq__(self, other):
+        return self.studentId == other.studentId and self.examId == other.examId and self.objectiveId == other.objectiveId
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+
 class Student:
     id: int
     name: str
@@ -17,10 +43,11 @@ class Objective:
     desc: str
     objectiveClass: str
 
-    def __init__(self, id, subject, name):
+    def __init__(self, id, name, subject):
         self.id = id
         self.subject = subject
         self.name = name
+        self.desc = "Long description here"
 
     def __eq__(self, other):
         return self.id == other.id
@@ -34,12 +61,14 @@ class ExamQuestion:
     objectiveId: int
     weight: float
 
-    result: int = 0
-
     def __init__(self, nr: str, objId: int, weight: float):
         self.number = nr
         self.objectiveId = objId
         self.weight = weight
+
+    def __str__(self):
+        return "Aufgabe: " + self.number + ", Objective: " + str(self.objectiveId) + ", weight: " + str(self.weight)
+
 
 class Exam:
     id: int
