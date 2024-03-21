@@ -37,8 +37,7 @@ def getObjectives():
 
 def getResultId(data, eId, sId, oId):
     for i in range(len(data["results"])):
-        if data["results"][i].examId == eId and data["results"][i].studentId == sId and data["results"][
-            i].objectiveId == oId:
+        if data["results"][i].examId == eId and data["results"][i].studentId == sId and data["results"][i].objectiveId == oId:
             return i
     data["results"].append(Result(sId, eId, oId, None))
     return len(data["results"]) - 1
@@ -46,8 +45,7 @@ def getResultId(data, eId, sId, oId):
 
 def getResult(data, eId, sId, oId):
     for i in range(len(data["results"])):
-        if data["results"][i].examId == eId and data["results"][i].studentId == sId and data["results"][
-            i].objectiveId == oId:
+        if data["results"][i].examId == eId and data["results"][i].studentId == sId and data["results"][i].objectiveId == oId:
             return data["results"][i]
     data["results"].append(Result(sId, eId, oId, None))
     return data["results"][-1]
@@ -55,7 +53,6 @@ def getResult(data, eId, sId, oId):
 
 def setResult(data, eId, sId, oId, value):
     for i in range(len(data["results"])):
-        if data["results"][i].examId == eId and data["results"][i].studentId == sId and data["results"][
-            i].objectiveId == oId:
+        if data["results"][i].examId == eId and data["results"][i].studentId == sId and data["results"][i].objectiveId == oId:
             data["results"][i].value = value
             return data["results"][i]

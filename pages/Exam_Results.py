@@ -27,9 +27,7 @@ def getResult(eId, sId, oId):
 
 def setResult(eId, sId, oId, value):
     for i in range(len(st.session_state.data["results"])):
-        if st.session_state.data["results"][i].examId == eId and st.session_state.data["results"][
-            i].studentId == sId and st.session_state.data["results"][
-            i].objectiveId == oId:
+        if st.session_state.data["results"][i].examId == eId and st.session_state.data["results"][i].studentId == sId and st.session_state.data["results"][i].objectiveId == oId:
             st.session_state.data["results"][i].value = value
             return st.session_state.data["results"][i]
 
@@ -51,14 +49,12 @@ def prevStudent():
         setResult(st.session_state.examId, st.session_state.studentId,
                   question.objectiveId, selectedResults[i])
     st.session_state.studentId -= 1
-    # print("Saved: ", st.session_state.data["results"])
 
 
 st.set_page_config(layout='wide')
 
 st.title(" " + st.session_state.data["exams"][st.session_state.examId].subject + ", "
-         + st.session_state.data["exams"][st.session_state.examId].creation
-         )
+         + st.session_state.data["exams"][st.session_state.examId].creation)
 
 st.markdown(
     """
@@ -140,9 +136,7 @@ for i, question in enumerate(st.session_state.data["exams"][st.session_state.exa
                                         [1, 1.5, 2, 2.5, 3, 3.5, 4],
                                         key=question.number,
                                         label_visibility="hidden",
-                                        value=values[i],
-
-                                        # format_func=format_labels,
+                                        value=values[i]
                                         )
             print(v, " => ", selected, values)
             selectedResults.append(selected)

@@ -3,8 +3,6 @@ import random
 import pandas as pd
 import streamlit as st
 
-from src.data import Result
-
 from src.data_importer import data_dict
 
 data = data_dict

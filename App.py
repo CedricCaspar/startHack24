@@ -1,12 +1,9 @@
 import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
 import plotly.graph_objects as go
+
 from src.data_importer import get_student_names, get_objectives_for_student
 import pandas as pd
-
-
-
-
 
 st.set_page_config(
     page_title="Students",
@@ -18,7 +15,6 @@ st.write("# Class 4b.")
 col1, col2 = st.columns(2)
 
 with col1:
-
     st.header("Students")
     students = get_student_names()
 
@@ -32,11 +28,7 @@ with col1:
             # Display the DataFrame as a table in Streamlit
             st.dataframe(df)
 
-
-
-
 with col2:
-
     with stylable_container(
             key="container_with_border",
             css_styles="""
@@ -48,8 +40,8 @@ with col2:
                 }
                 """,
     ):
-
-        categories = ['Reading Comprehension', 'Critical Thinking', 'Research Skills', 'Science and Exploration', 'Writing and Grammar', 'Advanced Math Skills']
+        categories = ['Reading Comprehension', 'Critical Thinking', 'Research Skills', 'Science and Exploration',
+                      'Writing and Grammar', 'Advanced Math Skills']
         values = [4, 3, 2, 5, 4, 4]
 
         # Create a radar chart

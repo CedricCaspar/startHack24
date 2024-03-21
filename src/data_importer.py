@@ -23,14 +23,13 @@ def getIdObjective(name):
 
 def getIdExam(id):
     df = data.loc[data['exam'] == id + 1]
-    # print(df.columns)
+
     date = df['date'].unique()
     sub = df['subject'].unique()
-    # print(date, sub)
 
     tasks = df[['oId', 'task', 'weight']].to_numpy()
     tasks = np.unique(tasks, axis=0)
-    # print(tasks.transpose()[2], tasks.transpose()[0], [str(n) for n in tasks.transpose()[1]])
+
     return Exam(id, date[0], sub[0], [str(n) for n in tasks.transpose()[1]], tasks.transpose()[0], tasks.transpose()[2])
 
 
@@ -71,8 +70,6 @@ def get_results():
 
 
 def get_exams():
-    objective_column = ['subject', 'exam', 'task', 'objective', 'weight', 'date', 'oId']
-    exam_data = data[objective_column]
     max_exams = 10
     exams = []
     for i in range(max_exams):
