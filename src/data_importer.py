@@ -6,26 +6,31 @@ import streamlit as st
 
 data = pd.read_excel("src/students/student_data copy.xlsx")
 
+
 def getIdStudent(name):
     df = data.loc[data['name'] == name]
     val = df['studentId'].unique().item()
 
     return val
+
+
 def getIdObjective(name):
     df = data.loc[data['objective'] == name]
     val = df['oId'].unique().item()
 
     return val
+
+
 def getIdExam(id):
-    df = data.loc[data['exam'] == id+1]
-    #print(df.columns)
+    df = data.loc[data['exam'] == id + 1]
+    # print(df.columns)
     date = df['date'].unique()
     sub = df['subject'].unique()
-    #print(date, sub)
+    # print(date, sub)
 
     tasks = df[['oId', 'task', 'weight']].to_numpy()
     tasks = np.unique(tasks, axis=0)
-    #print(tasks.transpose()[2], tasks.transpose()[0], [str(n) for n in tasks.transpose()[1]])
+    # print(tasks.transpose()[2], tasks.transpose()[0], [str(n) for n in tasks.transpose()[1]])
     return Exam(id, date[0], sub[0], [str(n) for n in tasks.transpose()[1]], tasks.transpose()[0], tasks.transpose()[2])
 
 
@@ -54,6 +59,7 @@ def get_objectives():
             unique.append(obj)
 
     return unique
+
 
 def get_results():
     objective_column = ['studentId', 'oId', 'exam', 'evaluation']
@@ -89,8 +95,8 @@ data_dict = {
 }
 st.session_state.data = data_dict
 
-def get_objectives_for_student(name):
 
+def get_objectives_for_student(name):
     # Find rows where any column matches `search_value`
     matched_rows = data[data.apply(lambda row: row.astype(str).str.contains(name).any(), axis=1)]
 

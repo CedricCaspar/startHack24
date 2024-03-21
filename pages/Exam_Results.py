@@ -56,7 +56,7 @@ def prevStudent():
 
 st.set_page_config(layout='wide')
 
-st.title(" "+st.session_state.data["exams"][st.session_state.examId].subject + ", "
+st.title(" " + st.session_state.data["exams"][st.session_state.examId].subject + ", "
          + st.session_state.data["exams"][st.session_state.examId].creation
          )
 
@@ -129,7 +129,8 @@ for i, question in enumerate(st.session_state.data["exams"][st.session_state.exa
     with st.container():
         col4, col5 = st.columns([8, 4])
         with col4:
-            st.markdown(f"#### {question.number}. {st.session_state.data['objectives'][question.objectiveId].objective}")
+            st.markdown(
+                f"#### {question.number}. {st.session_state.data['objectives'][question.objectiveId].objective}")
             st.markdown(f"Competency: {st.session_state.data['objectives'][question.objectiveId].competency}")
         with col5:
             v = getResult(st.session_state.examId,
