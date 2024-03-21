@@ -1,8 +1,12 @@
 import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
 import plotly.graph_objects as go
+from src.data_importer import get_student_names, get_objectives_for_student
+import pandas as pd
 
-from src.data_importer import get_student_names
+
+
+
 
 st.set_page_config(
     page_title="Students",
@@ -21,6 +25,14 @@ with col1:
     for student in students:
         with st.expander(student.name):
             st.write(f"Opening {student.name}")
+
+            objectives_dict = get_objectives_for_student(student.name)
+            df = pd.DataFrame(list(objectives_dict.items()), columns=['Objective', 'Evaluation'])
+
+            # Display the DataFrame as a table in Streamlit
+            st.dataframe(df)
+
+
 
 
 with col2:
